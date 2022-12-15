@@ -1,28 +1,42 @@
-import twitterLogo from './assets/twitter-logo.svg';
 import './App.css';
-
+import React, {useEffect} from 'react';
+import gitlogo from './assets/gitlogo.svg';
 // Constants
-const TWITTER_HANDLE = '_buildspace';
-const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
+const GIT_HANDLE = '/pj541';
+const GIT_LINK = `https://github.com/${GIT_HANDLE}`;
 
 const App = () => {
+  useEffect(() => {
+    const walletConnected = async ()=>{
+      if(window?.solana?.isPhantom){
+        console.log("Phantom Found");
+      }
+      else{
+        alert("Where is your phantom? ");
+      }
+    }
+    const onload = async ()=>{
+      await walletConnected();
+    }
+    window.addEventListener('load', onload());
+  },[]);
   return (
     <div className="App">
       <div className="container">
         <div className="header-container">
-          <p className="header">🖼 GIF Portal</p>
+          <p className="header">💃 GIF Portal</p>
           <p className="sub-text">
             View your GIF collection in the metaverse ✨
           </p>
         </div>
         <div className="footer-container">
-          <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
+          <img alt="Twitter Logo" className="twitter-logo" src={gitlogo} />
           <a
             className="footer-text"
-            href={TWITTER_LINK}
+            href={GIT_LINK}
             target="_blank"
             rel="noreferrer"
-          >{`built on @${TWITTER_HANDLE}`}</a>
+          >{` built on @${GIT_HANDLE}`}</a>
         </div>
       </div>
     </div>
